@@ -1,0 +1,33 @@
+
+   
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../js/login.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="loginScreen">
+            <h3>Log In to your User</h3>
+            <div id="usernameInput">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" pattern="[a-zA-Z0-9]{3, 25}">
+            </div>
+            <div id="passwordInput">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <input type="submit" value="Login" id="login">
+            <p>New to webdex? <a href="/signup">Create an account.</a></p>
+            <p id="incorrect_information" style="display:none">Username or Password is incorrect.</p>
+        </div>
+    </div>
+</body>
+
+</html>

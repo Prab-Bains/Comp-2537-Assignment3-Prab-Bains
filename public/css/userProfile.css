@@ -1,0 +1,81 @@
+html {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  margin: 0px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: darkred;
+  color: white;
+}
+main {
+  background-color: antiquewhite;
+  border-radius: 5px;
+  border-width: 5px;
+  border-style: solid;
+}
+#lists {
+  display: flex;
+  flex-direction: row;
+}
+#timeline {
+  width: 50%;
+}
+.timeBlock {
+  background-color: aquamarine;
+  border-color: white;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 3px;
+}
+img {
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+  border-radius: 25px;
+}
+#mainInformation {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+nav a {
+  display: inline-block;
+  padding: 10px;
+}
+
+nav a:hover {
+  background-color: darkgoldenrod;
+  color: black;
+}
+* {
+  box-sizing: border-box;
+}
+@media screen and (max-width: 550px) {
+  h1 {
+      margin: 0px;
+  }
+  main {
+      margin-bottom: 30px;
+      flex-direction: column;
+  }
+  nav {
+      flex-direction: column;
+  }
+  nav div {
+      display: flex;
+      flex-direction: column;
+  }
+  #mainInformation {
+      flex-direction: column;
+  }
+  #lists {
+      flex-direction: column;
+  }
+  #timeline {
+      width: 100%;
+  }
+}

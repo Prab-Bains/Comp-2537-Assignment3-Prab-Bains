@@ -1,0 +1,54 @@
+html{
+  height: 100vh;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-image: url("../img/PSMD_poster.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+#container {
+  margin-left: 33%;
+  margin-right: 33%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#loginScreen {
+  background-color: rgba(139, 0, 0, 0.5);
+  border-radius: 10px;
+  border-width: 5px;
+  border-style: solid;
+  height: 30%;
+}
+
+#username, #password {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#login {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#login:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+@media only screen and (max-width: 600px) {
+  #container {
+      margin-left: 0%;
+      margin-right: 0%;
+  }
+}

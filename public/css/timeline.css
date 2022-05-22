@@ -1,0 +1,44 @@
+html {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  margin: 0px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: darkred;
+  color: white;
+}
+nav a {
+  display: inline-block;
+  padding: 10px;
+}
+
+nav a:hover {
+  background-color: darkgoldenrod;
+  color: black;
+}
+* {
+  box-sizing: border-box;
+}
+.timeBlock {
+  background-color: antiquewhite;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
+  border-style: solid;
+}
+@media screen and (max-width: 550px) {
+  h1 {
+      margin: 0px;
+  }
+  nav {
+      flex-direction: column;
+  }
+  nav div {
+      display: flex;
+      flex-direction: column;
+  }
+}

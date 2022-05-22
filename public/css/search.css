@@ -1,0 +1,85 @@
+html {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#pokeLabel, #poke_type, #searchLabel, #search, #submit {
+  display: none;
+}
+
+body {
+  margin: 0px;
+}
+#selectionScreen {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  background-color: antiquewhite;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 5px;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.images_group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.image_container {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+img {
+  opacity: 1;
+  border-radius: 5px;
+  width: 100%;
+}
+p {
+  opacity: 1;
+  width: 100%;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: darkred;
+  color: white;
+}
+nav a {
+  display: inline-block;
+  padding: 10px;
+}
+
+nav a:hover {
+  background-color: darkgoldenrod;
+  color: black;
+}
+* {
+  box-sizing: border-box;
+}
+@media screen and (max-width: 550px) {
+  h1 {
+      margin: 0px;
+  }
+  main {
+      margin-bottom: 30px;
+      flex-direction: column;
+  }
+  nav {
+      flex-direction: column;
+  }
+  nav div {
+      display: flex;
+      flex-direction: column;
+  }
+}
