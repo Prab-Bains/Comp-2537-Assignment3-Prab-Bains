@@ -4,7 +4,7 @@ html{
   font-family: 'sigmar one', sans-serif;}
 
 body {
-  background-image: url("../img/PSMD_poster.png");
+  background-image: url("../img/background.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
