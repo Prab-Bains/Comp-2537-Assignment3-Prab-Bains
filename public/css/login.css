@@ -1,8 +1,7 @@
 html{
   height: 100vh;
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  font-family: 'sigmar one', sans-serif;}
 
 body {
   background-image: url("../img/PSMD_poster.png");

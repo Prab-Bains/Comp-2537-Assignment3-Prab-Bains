@@ -4,10 +4,10 @@
 
 html {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  font-family: 'sigmar one', sans-serif;}
 body {
   margin: 0px;
+  background-color: pink;
 }
 main {
   display: flex;

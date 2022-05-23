@@ -1,7 +1,6 @@
 html {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  font-family: 'sigmar one', sans-serif;}
 
 #pokeLabel, #poke_type, #searchLabel, #search, #submit {
   display: none;
@@ -9,6 +8,7 @@ html {
 
 body {
   margin: 0px;
+  background-color: pink;
 }
 #selectionScreen {
   display: flex;
@@ -39,6 +39,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 50%;
+  height: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 img {
   opacity: 1;
@@ -52,7 +56,7 @@ p {
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: darkred;
+  background-color: white;
   color: white;
 }
 nav a {

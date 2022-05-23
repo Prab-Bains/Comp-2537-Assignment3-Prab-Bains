@@ -1,14 +1,14 @@
 html {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  font-family: 'sigmar one', sans-serif;}
 body {
   margin: 0px;
+  background-color: pink;
 }
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: darkred;
+  background-color: white;
   color: white;
 }
 nav a {
