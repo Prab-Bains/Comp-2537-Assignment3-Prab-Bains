@@ -2,8 +2,6 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const bodyparser = require("body-parser")
-const cors = require('cors');
-app.use(cors());
 app.set('view engine', 'ejs');
 
 var session = require('express-session')
@@ -77,12 +75,19 @@ const userSchema = new mongoose.Schema({
 const cartSchema = new mongoose.Schema({
     cardImage: String,
     name: String,
-    price: String,
+    price: Number,
+    user: String
+})
+const orderSchema = new mongoose.Schema({
+    cardImage: String,
+    name: String,
+    price: Number,
     user: String
 })
 const timelineModel = mongoose.model("timeline", eventSchema);
 const userModel = mongoose.model("users", userSchema);
 const cartModel = mongoose.model("cart", cartSchema);
+const orderModel = mongoose.model("order", orderSchema);
 
 const Joi = require('joi');
 const req = require('express/lib/request');
@@ -307,7 +312,7 @@ app.put('/addToCart', function (req, res) {
             user: req.session.real_user[0].username,
             name: req.body.name,
             price: req.body.price
-        }, function (req, res) {
+        }, function (err, data) {
             if (err) {
                 console.log("Error: " + err)
             } else {
@@ -329,6 +334,65 @@ app.put('/addToCart', function (req, res) {
         })
     }
     res.send("Successfully added to cart.")
+})
+
+app.get('/cart', function (req, res) {
+    res.sendFile(__dirname + "/public/html/cart.html")
+})
+
+app.get('/getCartItems', function (req, res) {
+    cartModel.find({user: req.session.real_user[0].username}, function (err, data) {
+        if (err) {
+            console.log("Error: " + err)
+        } else {
+            console.log("Data: " + data)
+        }
+        res.send(data);
+    })
+})
+
+app.get('/cart/delete/:id', function (req, res) {
+    cartModel.remove({
+        '_id': req.params.id
+    }, function (err, data) {
+        if (err) {
+            console.log("Error: " + err);
+        } else {
+            console.log("Data: " + data);
+        }
+        res.send("Successfully deleted.")
+    })
+})
+
+app.get('/checkout', function (req, res) {
+    cartModel.find({name: req.session.real_user[0].username}, function (err, data) {
+        if (err) {
+            console.log("Error: " + err);
+        } else {
+            for (i = 0; i < data.length; i++) {
+                orderModel.add({
+                    cardImage: data[i].cardImage,
+                    name: data[i].name,
+                    price: data[i].price,
+                    user: data[i].user
+                }, function (err, data) {
+                    if (err) {
+                        console.log("Error: " + err)
+                    } else {
+                        console.log("Data: " + data)
+                    }
+                })
+            }
+        }
+    })
+    cartModel.remove({name: req.session.real_user[0].username}, function (err, data) {
+        if (err) {
+            console.log("Error: " + err);
+        } else {
+            console.log("Data: " + data);
+        }
+    })
+    res.send("Checked out all items.")
 })
 
 app.use(express.static("./public"))

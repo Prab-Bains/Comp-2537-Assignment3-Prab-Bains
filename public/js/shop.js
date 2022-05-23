@@ -1,9 +1,23 @@
 to_add = ''
 
-function addToCart() {
-    $.ajax({
+async function addToCart() {
+    id = $(this).attr("class")
+    cardInfo = ''
+    await $.ajax ({
+        type: "get",
+        url: `https://api.pokemontcg.io/v2/cards/${id}`,
+        success: (data) => {
+            cardInfo = data
+        }
+    })
+    await $.ajax({
         type: "put",
         url: "/addToCart",
+        data: {
+            cardImage: cardInfo.data.images.small,
+            name: cardInfo.data.name,
+            price: 1.00,
+        },
         success: () => {
             alert("Successfully added to cart.")
         }
@@ -12,10 +26,10 @@ function addToCart() {
 
 function displayCard(data) {
     to_add += `<div id="cardBlock">
-    <img src=${data.data.images.large}>
+    <img src=${data.data.images.large} id=${data.data.images.large}>
     <p>${data.data.name}</p>
     <p>Price: $1.00</p>
-    <button id="buy">Add to Cart</button>
+    <button id="buy" class=${data.data.id}>Add to Cart</button>
     </div>`
 }
 
@@ -61,9 +75,7 @@ function getTotal() {
 
 function setup() {
     getTotal();
-    $("#buy").click(() =>{
-        addToCart();
-    })
+    $("body").on("click", "#buy", addToCart)
 }
 
 $(document).ready(setup)
