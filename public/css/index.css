@@ -3,16 +3,19 @@ html {
   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-family: 'sigmar one', sans-serif;
 }
+
 body {
   margin: 0px;
   background-color: pink;
 }
+
 main {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 10px;
 }
+
 .image_container {
   border-radius: 10px;
   border-style: solid;
@@ -20,16 +23,20 @@ main {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 2%;
 }
+
 img {
   opacity: 1;
   border-radius: 5px;
   width: 100%;
 }
+
 p {
   opacity: 1;
   width: 100%;
 }
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -37,31 +44,39 @@ nav {
   color: white;
   margin-bottom: 1%;
 }
+
 nav a {
   display: inline-block;
   padding: 10px;
+  text-decoration: none;
+  color: black;
 }
 
 nav a:hover {
   background-color: darkgoldenrod;
   color: black;
 }
+
 * {
   box-sizing: border-box;
 }
+
 @media screen and (max-width: 550px) {
   h1 {
-      margin: 0px;
+    margin: 0px;
   }
+
   main {
-      margin-bottom: 30px;
-      flex-direction: column;
+    margin-bottom: 30px;
+    flex-direction: column;
   }
+
   nav {
-      flex-direction: column;
+    flex-direction: column;
   }
+
   nav div {
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
 }

@@ -3,12 +3,13 @@ function displayOrders(data) {
   for(j = 0; j < data.length; j++) {
       $("#orderHistory").append(`<div class="orderBlock">
       <img src="${data[j].cardImage}" id="cardPhotos">
+      </div>
       <div>
       <p>${data[j].name}</p>
       <p>${data[j].price}</p>
-      </div>
       </div>`)
   }
+  
 }
 
 function createOrders() {
@@ -26,7 +27,8 @@ function increaseHits() {
       type: "get",
       success: () => {
           $("main").empty()
-          loadEvents();
+          createEvents()
+          createOrders()
       }
   })
 }

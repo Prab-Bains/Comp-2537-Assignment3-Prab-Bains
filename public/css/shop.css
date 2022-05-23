@@ -25,6 +25,7 @@ main {
   flex-direction: column;
   gap: 10px;
   background-color: antiquewhite;
+  margin: 1%;
 }
 img {
   opacity: 1;
@@ -45,6 +46,8 @@ nav {
 nav a {
   display: inline-block;
   padding: 10px;
+  text-decoration: none;
+  color: black;
 }
 
 nav a:hover {
@@ -53,6 +56,10 @@ nav a:hover {
 }
 * {
   box-sizing: border-box;
+}
+
+button {
+  padding: 2%;
 }
 @media screen and (max-width: 550px) {
   h1 {

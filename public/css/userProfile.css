@@ -9,7 +9,7 @@ body {
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: darkred;
+  background-color: white;
   color: white;
 }
 main {
@@ -17,22 +17,22 @@ main {
   border-radius: 5px;
   border-width: 5px;
   border-style: solid;
+  margin: 2%;
 }
 #lists {
   display: flex;
   flex-direction: row;
 }
 .orderBlock {
-  background-color: red;
-  border-color: black;
+  /* border-color: black;
   border-width: 3px;
-  border-style: solid;
+  border-style: solid; */
   flex-direction: row;
   display: flex;
   gap: 20px;
 }
 #orderHistory {
-  width: 50%
+  width: 100%
 }
 #cardPhotos {
   border: none;
@@ -40,20 +40,25 @@ main {
   height: 25%;
 }
 #timeline {
-  width: 50%;
+  width: 100%;
 }
 .timeBlock {
-  background-color: aquamarine;
+  background-color: rgb(66, 188, 240);
   border-color: white;
   border-style: solid;
   border-radius: 5px;
   border-width: 3px;
+  padding: 2%;
 }
 img {
-  border-style: solid;
+  /* border-style: solid;
   border-width: 3px;
   border-color: black;
-  border-radius: 25px;
+  border-radius: 25px; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  height: 80%;
 }
 #mainInformation {
   display: flex;
@@ -63,6 +68,8 @@ img {
 nav a {
   display: inline-block;
   padding: 10px;
+  text-decoration: none;
+  color: black;
 }
 
 nav a:hover {
@@ -95,5 +102,10 @@ nav a:hover {
   }
   #timeline {
       width: 100%;
+  }
+
+  img{
+    width: 80%;
+    height: 80%;
   }
 }
