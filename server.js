@@ -214,7 +214,11 @@ app.get('/search', function (req, res) {
 })
 
 app.get('/login', function (req, res) {
-    res.sendFile(__dirname + '/public/html/login.html')
+    if (req.session.authenticated == true) {
+        res.redirect('/userProfile')
+    } else {
+        res.sendFile(__dirname + '/public/html/login.html')
+    }
 })
 
 app.get('/signup', function (req, res) {
@@ -337,7 +341,11 @@ app.put('/addToCart', function (req, res) {
 })
 
 app.get('/cart', function (req, res) {
-    res.sendFile(__dirname + "/public/html/cart.html")
+    if (req.session.authenticated == true) {
+        res.sendFile(__dirname + "/public/html/cart.html")
+    } else {
+        res.redirect("/")
+    }
 })
 
 app.get('/getCartItems', function (req, res) {
@@ -365,27 +373,7 @@ app.get('/cart/delete/:id', function (req, res) {
 })
 
 app.get('/checkout', function (req, res) {
-    cartModel.find({name: req.session.real_user[0].username}, function (err, data) {
-        if (err) {
-            console.log("Error: " + err);
-        } else {
-            for (i = 0; i < data.length; i++) {
-                orderModel.add({
-                    cardImage: data[i].cardImage,
-                    name: data[i].name,
-                    price: data[i].price,
-                    user: data[i].user
-                }, function (err, data) {
-                    if (err) {
-                        console.log("Error: " + err)
-                    } else {
-                        console.log("Data: " + data)
-                    }
-                })
-            }
-        }
-    })
-    cartModel.remove({name: req.session.real_user[0].username}, function (err, data) {
+    cartModel.remove({user: req.session.real_user[0].username}, function (err, data) {
         if (err) {
             console.log("Error: " + err);
         } else {
@@ -393,6 +381,41 @@ app.get('/checkout', function (req, res) {
         }
     })
     res.send("Checked out all items.")
+})
+
+app.put('/insertIntoOrder', function (req, res) {
+    orderModel.create({
+        cardImage: req.body.cardImage,
+        name: req.body.name,
+        price: req.body.price,
+        user: req.body.user
+    }, function (err, data) {
+        if (err) {
+            console.log("Error: " + err)
+        } else {
+            console.log("Data: " + data)
+        }
+    })
+    res.send("Inserted item into order.")
+})
+
+app.get('/getPreviousOrders', function (req, res) {
+    orderModel.find({user: req.session.real_user[0].username}, function (err, data) {
+        if (err) {
+            console.log("Error: " + err)
+        } else {
+            console.log("Data: " + data)
+        }
+        res.send(data)
+    })
+})
+
+app.get('/orders', function (req, res) {
+    if (req.session.authenticated == true) {
+        res.sendFile(__dirname + "/public/html/orders.html")
+    } else {
+        res.redirect("/")
+    }
 })
 
 app.use(express.static("./public"))

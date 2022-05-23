@@ -1,8 +1,28 @@
+function displayOrders(data) {
+  console.log(data)
+  for(j = 0; j < data.length; j++) {
+      $("#orderHistory").append(`<div class="orderBlock">
+      <img src="${data[j].cardImage}" id="cardPhotos">
+      <div>
+      <p>${data[j].name}</p>
+      <p>${data[j].price}</p>
+      </div>
+      </div>`)
+  }
+}
+
+function createOrders() {
+  $.ajax({
+      url: "/getPreviousOrders",
+      type: "get",
+      success: displayOrders
+  })
+}
 
 function increaseHits() {
   x = $(this).attr("id")
   $.ajax({
-      url: `https://polar-refuge-74063.herokuapp.com/timeline/increaseHits/${x}`,
+      url: `http://localhost:5000/timeline/increaseHits/${x}`,
       type: "get",
       success: () => {
           $("main").empty()
@@ -14,7 +34,7 @@ function increaseHits() {
 function deleteElements() {
   x = $(this).attr("id")
   $.ajax({
-      url: `https://polar-refuge-74063.herokuapp.com/timeline/delete/${x}`,
+      url: `http://localhost:5000/timeline/delete/${x}`,
       type: "get",
       success: function () {
           $(`#${x}`).remove()
@@ -44,6 +64,7 @@ function createEvents() {
 
 function setup() {
   createEvents();
+  createOrders();
   $("body").on("click", ".like", increaseHits)
   $("body").on("click", ".delete", deleteElements)
 }

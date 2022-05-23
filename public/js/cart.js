@@ -1,9 +1,48 @@
-function checkout() {
+function addEvent(data) {
+  date = new Date()
+  time = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+  total = 0
+  for (l = 0; l < data.length; l++) {
+      total += data[l].price
+  }
   $.ajax({
+      data: {
+          eventDescription: `Checked out ${data.length} cards for $${total}.`,
+          time: `At ${time}.`,
+          hits: 1
+      },
+      type: "put",
+      url: "/timeline/insert"
+  })
+}
+
+async function checkout() {
+  cardInfo = ''
+  await $.ajax({
+      type: "get",
+      url: "/getCartItems",
+      success: (data) => {
+          cardInfo = data
+          addEvent(data)
+      }
+  })
+  for (k = 0; k < cardInfo.length; k++) {
+      await $.ajax({
+          type: "put",
+          url: "/insertIntoOrder",
+          data: {
+              cardImage: cardInfo[k].cardImage,
+              name: cardInfo[k].name,
+              price: cardInfo[k].price,
+              user: cardInfo[k].user
+          }
+      })
+  }
+  await $.ajax({
       type: "get",
       url: "/checkout",
       success: () => {
-          alert("Successfully checked out items.");
+          alert("Succesfully checked out all items")
           location.href = "/"
       }
   })
@@ -50,7 +89,7 @@ function loadItems() {
       success: (data) => {
           console.log(data);
           for (i = 0; i < data.length; i++) {
-              $("main").append(`<div id=${data[i]["_id"]} class="cartBlock">
+              $("#cart_group").append(`<div id=${data[i]["_id"]} class="cartBlock">
               <img src="${data[i].cardImage}">
               <div>
               <h3>${data[i].name}</h3>
