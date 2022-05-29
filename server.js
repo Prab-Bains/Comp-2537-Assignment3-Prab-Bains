@@ -98,6 +98,11 @@ const schema = Joi.object({
     password: Joi.string().pattern(new RegExp('[a-zA-Z0-9]')).min(3).max(30).required()
 })
 
+const newUserSchema = Joi.object({
+    username: Joi.string().alphanum().min(3).max(30).required(),
+    password: Joi.string().pattern(new RegExp('[a-zA-Z0-9]')).min(3).max(30).required()
+})
+
 app.use(bodyparser.urlencoded({
     extended: true
 }));
@@ -266,11 +271,39 @@ app.put('/addAccount', function (req, res) {
     userModel.create({
         username: req.body.username,
         password: req.body.password,
-        pfp: '../img/profilepic.png'
+        pfp: '../img/profilepic.png',
+        type: req.body.type
+
     }, function (err, data) {
         const {
             error
         } = schema.validate({
+            username: username,
+            password: password
+        })
+        if (error) {
+            req.session.authenticated = false
+            res.send("incorrect information")
+        } else if (err) {
+            console.log("Error: " + err)
+        } else {
+            console.log("New Account: " + data)
+        }
+        res.send("Data sent successfully!")
+    })
+})
+
+app.put('/addAdmin', function (req, res) {
+    userModel.create({
+        username: req.body.username,
+        password: req.body.password,
+        pfp: '../img/profilepic.png',
+        type: req.body.type
+
+    }, function (err, data) {
+        const {
+            error
+        } = newUserSchema.validate({
             username: username,
             password: password
         })

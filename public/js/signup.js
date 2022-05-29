@@ -23,6 +23,7 @@ function addAnAccount() {
       data: {
           username: $("#username").val(),
           password: $("#password").val(),
+          type: "user"
       },
       success: redirectToLoginPage
   })

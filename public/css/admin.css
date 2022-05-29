@@ -1,15 +1,22 @@
 html {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'sigmar one', sans-serif;
 }
 body {
   margin: 0px;
+  background-color: pink;
 }
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: darkred;
+  background-color: white;
   color: white;
+  margin-bottom: 2%;
+}
+
+#addUser {
+  margin-bottom: 2%;
+  padding: 1%;
 }
 nav a {
   display: inline-block;
@@ -24,11 +31,18 @@ nav a:hover {
   box-sizing: border-box;
 }
 .userBlock {
-  background-color: antiquewhite;
   border-color: black;
   border-width: 2px;
   border-radius: 5px;
   border-style: solid;
+}
+
+.userCard {
+  background-color: lightblue;
+  padding: 1%;
+  margin-left: 8%;
+  margin-right: 8%;
+  border: 1px solid black;
 }
 .profileEditor {
   background-color: aquamarine;
@@ -36,6 +50,8 @@ nav a:hover {
   border-width: 2px;
   border-radius: 5px;
   border-style: solid;
+  margin-left: 8%;
+  margin-right: 8%;
 }
 @media screen and (max-width: 550px) {
   h1 {

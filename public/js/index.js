@@ -3,13 +3,11 @@ css_add = ''
 pokemon_array = []
 
 function verified(data) {
-    console.log(data);
     if (data == true) {
         $.ajax({
             type: "get",
             url: "/checkUserType",
             success: (data) => {
-                console.log(data.type)
                 if (data == "admin") {
                     $("#profile").show()
                     $("#login").hide()
