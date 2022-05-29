@@ -27,7 +27,7 @@ function verified(data) {
         })
     } else {
         $("#profile").hide()
-        $("#login").show()
+        // $("#login").show()
         $("#game").show()
         $("#signOut").hide()
         $("#admin").hide()

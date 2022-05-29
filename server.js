@@ -70,7 +70,8 @@ const eventSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
     username: String,
     password: String,
-    pfp: String
+    pfp: String,
+    type: String
 })
 const cartSchema = new mongoose.Schema({
     cardImage: String,
@@ -305,6 +306,10 @@ app.get('/checkAuthentication', function (req, res) {
     res.send(req.session.authenticated)
 })
 
+app.get('/checkUserType', function (req, res) {
+    res.send(req.session.real_user[0].type)
+})
+
 app.get('/shop', function (req, res) {
     res.sendFile(__dirname + "/public/html/shop.html")
 })
@@ -415,6 +420,114 @@ app.get('/orders', function (req, res) {
         res.sendFile(__dirname + "/public/html/orders.html")
     } else {
         res.redirect("/")
+    }
+})
+
+app.get('/admin', function (req, res) {
+    if (req.session.authenticated == true) {
+        res.sendFile(__dirname + "/public/html/admin.html")
+    } else {
+        res.redirect("/")
+    }
+})
+
+app.get('/getAllUsers', function (req, res) {
+    userModel.find({type: 'user'}, function (err, data) {
+        if (err) {
+            console.log("Error: " + err)
+        } else {
+            console.log("Data: " + data)
+        }
+        res.send(data)
+    })
+})
+
+app.get('/findUser/:id', function (req, res) {
+    userModel.find({"_id": req.params.id}, function (err, data) {
+        if (err) {
+            console.log("Error: " + err)
+        } else {
+            console.log("Data: " + data)
+        }
+        res.send(data)
+    })
+})
+
+app.post('/updateUsername/:id', function (req, res) {
+    const usernameSchema = Joi.object({
+        username: Joi.string().alphanum().min(3).max(30).required()
+    })
+    const {error, value} = usernameSchema.validate({username: req.body.newUsername})
+    if (error) {
+        console.log(error)
+        res.send(error)
+    } else {
+        userModel.updateOne({"_id": req.params.id}, {
+        $set: {username: req.body.newUsername}
+        }, function (err, data) {
+            if (err) {
+                console.log("Error: " + err)
+                res.send(err)
+            } else {
+                console.log("Data: " + data)
+                res.send("updated successfully")
+            }
+        })
+    }
+})
+
+app.post('/updatePassword/:id', function (req, res) {
+    const passwordSchema = Joi.object({
+        password: Joi.string().pattern(new RegExp('[a-zA-Z0-9]')).min(3).max(30).required()
+    })
+    const {error, value} = passwordSchema.validate({password: req.body.newPassword})
+    if (error) {
+        console.log(error)
+        res.send(error)
+    } else {
+        userModel.updateOne({"_id": req.params.id}, {
+        $set: {password: req.body.newPassword}
+        }, function (err, data) {
+            if (err) {
+                console.log("Error: " + err)
+                res.send(err)
+            } else {
+                console.log("Data: " + data)
+                res.send("updated successfully")
+            }
+        })
+    }
+})
+
+app.delete('/deleteUser/:id', function (req, res) {
+    userModel.remove({"_id": req.params.id}, function (err, data) {
+        if (err) {
+            console.log("Error: " + err)
+        } else {
+            console.log("Data: " + data)
+            res.send("successfully deleted")
+        }
+    })
+})
+
+app.get('/game', function (req, res) {
+    if (req.session.authenticated) {
+        res.sendFile(__dirname + "/public/html/game.html")
+    } else {
+        res.redirect("/")
+    }
+})
+
+app.post('/validateBoardSize', function (req, res) {
+    const gameSizeSchema = Joi.object({
+        gameSize: Joi.string().pattern(new RegExp('([3-8]+[x][3-8]+)')).min(3).max(3).required()
+    })
+    const {error, value} = gameSizeSchema.validate({gameSize: req.body.gameSize})
+    if (error) {
+        console.log(error)
+        res.send("incorrect information")
+    } else {
+        res.send(req.body.gameSize)
     }
 })
 
