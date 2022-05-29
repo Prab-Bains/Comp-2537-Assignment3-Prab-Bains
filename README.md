@@ -11,7 +11,7 @@ To build a client side interface for the Pokémon API - https://pokeapi.co/.
 - In the search page, you should be performing form validation for any improper user's entered values. For example, if a user are searching by weight,  the user should only allowed to enter numeric text into the HTML form.
 - For the search page, you should at least use either a menu, radio buttons, or check boxes for your criteria.
 
-### Assignment 1 Demo Link:
+## Assignment 1 Demo Link:
 - https://youtu.be/tjjUG9cZPbM
 
 ## Assignment 1 Heroku link:
@@ -22,6 +22,19 @@ To build a client side interface for the Pokémon API - https://pokeapi.co/.
 - Replace calls to API with calls to own database or own json files
 - Add a global timeline component
 
-### Assignment 2 Demo Link:
+## Assignment 2 Demo Link:
 Replacing API calls demo: https://youtu.be/tnK0Hqa-4gE
 timeline demo: https://youtu.be/ygyMoNnolvI
+
+## Assignment 3 Tasks:
+- Adding shopping cart feature
+
+## Assignment 3 Demo Link:
+https://youtu.be/0HnqemOTnmk
+
+## Assignment 4 Tasks:
+- Admin dashboard
+- Matching game with CSS animations
+
+## Assignment 4 Demo Link:
+https://youtu.be/Z7BJQfa3Kio
