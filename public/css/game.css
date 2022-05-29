@@ -1,9 +1,11 @@
 html {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'sigmar one', sans-serif;
 }
 body {
   margin: 0px;
+  background-color: pink;
+  height: 100vh;
 }
 main {
   display: flex;
@@ -16,8 +18,9 @@ main {
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: darkred;
   color: white;
+  background-color: white;
+
 }
 nav a {
   display: inline-block;
@@ -32,20 +35,20 @@ nav a:hover {
   box-sizing: border-box;
 }
 #game_grid{
-  border: 2px tomato solid;
   width: 50%;
   height: 80vh;
   display: flex;
   flex-wrap: wrap;
   perspective: 1000px;
   gap: 10px;
+  padding-bottom: 5%;
 }
 
 .card{
-  border-color: yellow;
+  border-color: black;
   border-style: solid;
   border-width: 5px;
-  background-color: lightblue;
+  background-color: rgb(0, 242, 254);
   width: calc(33.3% - 10px);
   height: calc(33.3% - 10px);
   position: relative;
@@ -54,8 +57,6 @@ nav a:hover {
   display: flex;
 
 }
-
-
 
 img{
   width: 100px;

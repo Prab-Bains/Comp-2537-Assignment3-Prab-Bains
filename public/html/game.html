@@ -6,24 +6,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Matching Game</title>
         <link rel="stylesheet" href="../css/game.css">
+        <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="../js/game.js"></script>
     </head>
     <body>
         <header>
-            <h1><a href="/">Prab's Pokemons</a></h1>
+            <h1>Prab's Pokemons</h1>
         </header>
         <nav>
             <div>
-                <a href="/history">History</a>
-                <a href="/shop">Shop</a>
+              
+              <a href="/">Home</a>
+              <a href="/userProfile">Profile</a>
+              <a href="/search">Search</a>
+            <a href="/shop">Shop</a>
             </div>
-            <a href="/search">Search</a>
+
         </nav>
         <main>
             <div>
-            <h3>Please select board size (max 8x8, min 3x4)</h3>
-            <input type="text" id="gridSize">
+            <h3>Please select board size</h3>
+            <h3>(Total cards needs to be an even number between 12-64)</h3>
+            <input type="text" id="gridSize" value="3x4">
             <input type="submit" value="Create Grid" id="submit">
             </div>
         </main>

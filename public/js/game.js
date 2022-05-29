@@ -7,7 +7,7 @@ pokemonPairs = {}
 pokemon_array = []
 to_add = ''
 game_score = 0
-timer = 100
+timer = 1000
 columnSize = 0
 rowSize = 0
 
@@ -57,7 +57,7 @@ async function createCards(data) {
         } else {
             columnSize = parseInt(data[0])
             rowSize = parseInt(data[2])
-            timer = 7 * rowSize + (7 * (rowSize - columnSize))
+            timer = 7 * rowSize + (7 * (rowSize - columnSize) + 5)
             for (i = 0; i < boardSize / 2; i++) {
                 x = Math.floor(Math.random() * 897) + 1
                 pokemon_array[i] = x
